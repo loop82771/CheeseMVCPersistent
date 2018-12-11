@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Menus</h2>
+
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+    </tr>
+
+    @foreach (var menu in Model)
+    {
+        <tr>
+            <a href="/Menu/ViewMenu/"@menu.ID><td>@menu.Name</td></a>
+
+        </tr>
+    }
+</table>
+
+@if (Model.Count == 0)
+{
+    <p>No menus yet!</p>
+}
+
+<p><a asp-controller="Menu" asp-action="Add">Add Menu</a></p>
