@@ -24,10 +24,26 @@ namespace CheeseMVC.ViewModels
 
         public IList<SelectListItem> Categories { get; set; }
 
-        public AddCheeseViewModel(IEnumerable<CheeseCategory> categories) { }
-
         public AddCheeseViewModel() { }
 
+        public AddCheeseViewModel(IEnumerable<CheeseCategory> categories)
+        {
+
+            Categories = new List<SelectListItem>();
+
+            foreach (var category in categories)
+            {
+                Categories.Add(new SelectListItem
+                {
+                    Value = category.ID.ToString(),
+                    Text = category.Name.ToString(),
+                });
+            }
+
+
+
+        }
     }
-    }
+
+}
 

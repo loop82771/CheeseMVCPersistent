@@ -6,18 +6,14 @@
 <h2>Menus</h2>
 
 <table class="table">
-
-    <tr>
-        <th>Name</th>
-    </tr>
-
-    @foreach (var menu in Model)
-    {
-        <tr>
-            <a href="/Menu/ViewMenu/"@menu.ID><td>@menu.Name</td></a>
-
-        </tr>
-    }
+    <ul>
+        @foreach (var menu in Model)
+        {
+            <li>
+                <a asp-controller="Menu" asp-action="ViewMenu" asp-route-id="@menu.ID">@menu.Name</a>
+            </li>
+        }
+        </ul>
 </table>
 
 @if (Model.Count == 0)
