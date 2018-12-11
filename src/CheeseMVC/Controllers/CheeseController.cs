@@ -10,11 +10,11 @@ namespace CheeseMVC.Controllers
 {
     public class CheeseController : Controller
     {
-        private CheeseDbContext context;
+        private readonly CheeseDbContext context;
 
         public CheeseController(CheeseDbContext dbContext)
         {
-            context = dbContext;
+            this.context = dbContext;
         }
 
         // GET: /<controller>/
@@ -84,8 +84,8 @@ namespace CheeseMVC.Controllers
             }
 
             CheeseCategory theCategory = context.Categories
-                .Include(c => c.Cheeses)
-                .Single(c => c.ID == id);
+                .Include(cat => cat.Cheeses)
+                .Single(cat => cat.ID == id);
 
             ViewBag.Title = "Cheeses in category: " + theCategory.Name;
             return View("Index", theCategory.Cheeses);
